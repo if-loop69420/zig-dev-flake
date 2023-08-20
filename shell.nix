@@ -2,7 +2,11 @@
 with pkgs;
 mkShell {
   buildInputs = [ ];
-  nativeBuildInputs = [ ];
+  nativeBuildInputs = [ 
+    zig
+    vscode
+    vscode-extensions.tiehuis.zig
+  ];
   shellHook = '' 
   
   '';

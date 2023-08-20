@@ -8,8 +8,11 @@
   outputs = { self, nixpkgs, flake-utils}:
     flake-utils.lib.eachDefaultSystem
       (system:
-        let pkgs = nixpkgs.legacyPackages.${system}; in 
+        let 
+          pkgs = nixpkgs.legacyPackages.${system}; 
+        in 
         {
+          nixpkgs.config.allowUnfreePredicate = true;
           devShells.default = import ./shell.nix { inherit pkgs; };
         }
       );
