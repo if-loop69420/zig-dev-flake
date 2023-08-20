@@ -9,10 +9,9 @@
     flake-utils.lib.eachDefaultSystem
       (system:
         let 
-          pkgs = nixpkgs.legacyPackages.${system}; 
+          pkgs = import nixpkgs { system = "${system}"; config.allowUnfree = true;}; 
         in 
         {
-          nixpkgs.config.allowUnfreePredicate = true;
           devShells.default = import ./shell.nix { inherit pkgs; };
         }
       );
